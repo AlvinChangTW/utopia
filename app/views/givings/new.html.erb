@@ -1,0 +1,11 @@
+<%= form_for @giving ,:url => givings_path do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+  <%= f.label :area %>
+  <%= f.text_field :area %>
+  <%= f.label :type %>
+  <%= f.text_field :type %>
+  <%= f.submit "新增物品" %>
+<% end %>

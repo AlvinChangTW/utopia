@@ -1,0 +1,3 @@
+class Lending < Good
+end
+

@@ -1,0 +1,23 @@
+<h1>烏托邦幫忙</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <td>物品名稱</td>
+      <td>物品類別</td>
+      <td>說明</td>
+      <td>物品狀態</td>
+    </tr>
+  </thead>
+  <tbody>
+    <% @givings.each do |g| %>
+    <tr>
+      <td><%= g.name %></td>
+      <td><%= g.type %></td>
+      <td><%= g.description %></td>
+      <td><%= g.status %></td>
+    </tr>
+    <% end %>
+  </tbody>
+
+</table>

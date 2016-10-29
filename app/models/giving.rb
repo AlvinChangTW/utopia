@@ -1,0 +1,3 @@
+class Giving < Good
+end
+

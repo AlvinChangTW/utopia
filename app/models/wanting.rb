@@ -1,0 +1,2 @@
+class Wanting < Good
+end
