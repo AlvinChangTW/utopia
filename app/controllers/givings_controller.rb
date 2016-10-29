@@ -1,6 +1,6 @@
 class GivingsController < ApplicationController
   def index
-    @givings = Giving.page(params[:page]).per(10)
+    @givings = Giving.all.page(params[:page]).per(10)
   end
   def new
     @giving = Giving.new
@@ -14,6 +14,6 @@ class GivingsController < ApplicationController
 
   private
   def giving_params
-    params.require(:giving).permit(:name, :description, :area, :type)
+    params.require(:giving).permit(:name, :description, :area, :type, :category_id)
   end
 end

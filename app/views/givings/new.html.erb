@@ -1,11 +1,14 @@
 <%= form_for @giving ,:url => givings_path do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.label :area %>
-  <%= f.text_field :area %>
-  <%= f.label :type %>
+<div class="form-group">
+  <%= f.label :name,"名稱" %>
+  <%= f.text_field :name , :class => "form-control" %>
+</div>
+  <%= f.label :type, "物品期許" %>
   <%= f.text_field :type %>
+  <%= f.collection_select(:category_id, Category.all, :id, :name,:include_blank => "please select" )%>
+  <%= f.label :description, "說明" %>
+  <%= f.text_field :description %>
+  <%= f.label :area, "地區" %>
+  <%= f.text_field :area %>
   <%= f.submit "新增物品" %>
 <% end %>
