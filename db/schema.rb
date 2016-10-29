@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161029052256) do
+ActiveRecord::Schema.define(version: 20161029140817) do
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 20161029052256) do
     t.string   "picture_content_type"
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "fb_uid"
+    t.string   "fb_image"
+    t.string   "fb_token"
+    t.datetime "fb_expires_at"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["fb_uid"], name: "index_users_on_fb_uid", unique: true
   end
 
 end

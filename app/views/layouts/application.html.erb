@@ -10,6 +10,13 @@
 
   <body>
     <div class="container">
+      <% if current_user %>
+        <%= link_to "登出", auth_signout_path, :method => :post %>
+        <%= current_user.name %>
+        <%= image_tag( current_user.fb_image ) %>
+      <% else %>
+        <a href="/auth/facebook">Facebook 登入</a>
+      <% end %>
       <%= yield %>
     </div>
   </body>
