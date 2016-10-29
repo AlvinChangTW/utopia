@@ -13,11 +13,10 @@
     <% @goods.each do |g| %>
     <tr>
       <td><%= g.name %></td>
-      <td><%= g.type %></td>
+      <td><%= t(g.type) %></td>
       <td><%= g.description %></td>
       <td><%= g.status %></td>
     </tr>
     <% end %>
   </tbody>
-
 </table>
