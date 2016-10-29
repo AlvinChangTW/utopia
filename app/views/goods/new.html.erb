@@ -1,11 +1,11 @@
-<%= form_for @giving.becomes(Good) ,:url => givings_path do |f| %>
+<%= form_for @good.becomes(Good) ,:url => goods_path do |f| %>
 <div class="form-group">
   <%= f.label :name,"名稱" %>
   <%= f.text_field :name , :class => "form-control" %>
 </div>
   <%= f.label :type, "物品期許" %>
   <%#= f.text_field :type %>
-  <%= f.select :type, Good.name%>
+  <%= f.select :type, [ Giving.name, Lending.name, Wanting.name] %>
   <%= f.collection_select(:category_id, Category.all, :id, :name,:include_blank => "物品類別" )%>
   <%= f.label :description, "說明" %>
   <%= f.text_field :description %>
