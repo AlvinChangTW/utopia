@@ -1,4 +1,5 @@
 class Good < ApplicationRecord
+  belongs_to :user
   belongs_to :category
   validates_presence_of :name
   has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "http://pic.pimg.tw/rieszliu/1174375311.jpg"

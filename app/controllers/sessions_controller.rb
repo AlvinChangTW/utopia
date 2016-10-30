@@ -18,7 +18,8 @@ class SessionsController < ApplicationController
                        :email => auth_hash[:info][:email],
                        :fb_image => auth_hash[:info][:image],
                        :fb_token => auth_hash[:credentials][:token],
-                       :fb_expires_at => auth_hash[:credentials][:expires_at] )
+                       :fb_expires_at => auth_hash[:credentials][:expires_at],
+                       :fb_uid => auth_hash[:uid] )
 
       user.save!
     end

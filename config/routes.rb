@@ -4,5 +4,5 @@ Rails.application.routes.draw do
   resources :givings
   get '/auth/:provider/callback' => 'sessions#create'
   post '/auth/signout' => "sessions#destroy"
-  root :to=> "givings#index"
+  root :to=> "goods#index"
 end
