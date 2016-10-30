@@ -1,19 +1,29 @@
-<h1>烏托邦幫忙</h1>
-<%= link_to "新增物品", new_good_path, :class => "btn btn-success"%>
-<table class="table table-striped">
-  <thead>
+<div class="jumbotron">
+  <div class="container">
+    <h1>漂泊的東東</h1>
+    <p>這是一個讓你用不到的東東有效交流的平台，讓它出去漂流，幫助更多需要它的人</p>
+  </div>
+</div>
+<h1></h1>
+<%= link_to "新增東東", new_good_path, :class => "btn btn-success"%>
+<table class="table">
+  <thead class="thead-default">
     <tr>
-      <td>物品名稱</td>
-      <td>物品類別</td>
-      <td>說明</td>
-      <td>物品狀態</td>
+      <td class="col-sm-1">我有東東想...</td>
+      <td class="col-sm-1"></td>
+      <td>東東名稱</td>
+      <td>東東地區</td>
+      <td>東東說明</td>
+      <td>東東狀態</td>
     </tr>
   </thead>
   <tbody>
     <% @goods.each do |g| %>
     <tr>
-      <td><%= g.name %></td>
       <td><%= t(g.type) %></td>
+      <td class="list-img"><%= image_tag g.picture.url(:thumb) %></td>
+      <td><%= g.name %></td>
+      <td><%= g.area %></td>
       <td><%= g.description %></td>
       <td><%= g.status %></td>
     </tr>

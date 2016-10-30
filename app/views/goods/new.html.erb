@@ -1,14 +1,24 @@
 <%= form_for @good.becomes(Good) ,:url => goods_path do |f| %>
-<div class="form-group">
-  <%= f.label t(:name) %>
-  <%= f.text_field :name , :class => "form-control" %>
+<div class="col-sm-offset-3 col-sm-6 new-good">
+  <div class="form-group">
+    <%= f.label t(:name) %>
+    <%= f.text_field :name , :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :type, "我有東東想要" %>
+    <%= f.select :type, [ Giving.name, Lending.name, Wanting.name] %>
+    <%= f.collection_select(:category_id, Category.all, :id, :name,:prompt => "東東類別" )%>
+  </div>
+  <div class="form-group">
+    <%= f.label :area, "地區" %>
+    <%= f.text_field :area , :class => "form-control" %>
+  </div>
+  上傳照片<%= f.file_field :picture %>
+  <div class="form-group">
+    <%= f.label :description, "說明" %>
+    <%= f.text_area :description , :class => "form-control" %>
+  </div>
+    <%= f.submit "新增物品" , :class => "btn btn-info"%>
+  <% end %>
+  <%= link_to "返回主頁", goods_path, :class => "btn btn-default" %>
 </div>
-  <%= f.label :type, "我有東西想要" %>
-  <%= f.select :type, [ t(Giving.name), t(Lending.name), t(Wanting.name)] %>
-  <%= f.collection_select(:category_id, Category.all, :id, :name,:prompt => "物品類別" )%>
-  <%= f.label :description, "說明" %>
-  <%= f.text_field :description %>
-  <%= f.label :area, "地區" %>
-  <%= f.text_field :area %>
-  <%= f.submit "新增物品" %>
-<% end %>

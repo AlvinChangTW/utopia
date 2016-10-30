@@ -24,14 +24,17 @@
           </div>
         <%end%>
       </div>
-      <% if current_user %>
-        <%= link_to "登出", auth_signout_path, :method => :post %>
-        <%= current_user.name %>
-        <%= image_tag( current_user.fb_image ) %>
-      <% else %>
-        <a href="/auth/facebook">Facebook 登入</a>
-      <% end %>
+      <span class="login">
+        <% if current_user %>
+          <%= link_to "登出", auth_signout_path, :method => :post %>
+          <%= current_user.name %>
+          <%= image_tag( current_user.fb_image ) %>
+        <% else %>
+          <a href="/auth/facebook">Facebook 登入</a>
+        <% end %>
+      </span>
       <%= yield %>
     </div>
   </body>
 </html>
+

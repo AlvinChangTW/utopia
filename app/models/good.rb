@@ -1,7 +1,7 @@
 class Good < ApplicationRecord
   belongs_to :category
   validates_presence_of :name
-  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/missing.png"
+  has_attached_file :picture, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "http://pic.pimg.tw/rieszliu/1174375311.jpg"
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\z/
 end
 
