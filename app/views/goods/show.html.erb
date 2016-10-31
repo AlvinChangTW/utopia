@@ -1,6 +1,7 @@
 <div class="col-sm-12">
   <div class="col-sm-8 col-sm-offset-2">
     <ul class="list-group">
+      <li class="list-group-item">發文者：<%= @good.user.name %></li>
       <li class="list-group-item">東東名稱：<%= @good.name %></li>
       <li class="list-group-item">東東地區：<%= @good.area %></li>
       <li class="list-group-item">東東類別：<%= @good.category.name %></li>
@@ -9,5 +10,32 @@
     <h4 class="col-sm-12">真相在這邊：</h4>
     <div class="show-img"><%= image_tag @good.picture.url %></div>
     <br>
-    <%= link_to "返回主頁", goods_path, :class => "btn btn-default" %></div>
+  </div>
 </div>
+<table class="table">
+  <thead>
+    <th>留言內容</th>
+    <th>留言者</th>
+    <th>留言時間</th>
+  </thead>
+  <tbody>
+    <% @comments.each do |c|%>
+      <tr>
+        <td><%=c.content%></td>
+        <td><%=c.user.name %></td>
+        <td><%=c.created_at.localtime.to_s(:db)%></td>
+        <%if current_user == c.user%>
+        <td><%=link_to "", edit_good_comment_path(@good,c), :class =>"btn btn-info glyphicon glyphicon-pencil"%></td>
+        <td><%=link_to "", good_comment_path(@good,c),:method =>:delete, :class =>"btn btn-danger glyphicon glyphicon-trash"%></td>
+        <%end%>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+<% @comment = @good.comments.build %>
+<%=form_for @comment, :url => good_comments_path(@good), :method => :post do |f| %>
+  <%=f.label :content,"留言"%>
+  <%=f.text_area :content, :class =>"form-control"%>
+  <%=f.submit "新增留言", :class =>"btn btn-primary"%>
+  <%= link_to "返回主頁", goods_path, :class => "btn btn-default" %>
+<% end %>

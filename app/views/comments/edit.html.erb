@@ -1,0 +1,27 @@
+<h4>文章主題：<%= @good.name %></h4>
+<h4>文章類別：<%= @good.category.name %></h4>
+<h4>文章內容：<%= @good.description %></h4>
+<table class="table">
+ <thead>
+    <th>留言內容</th>
+   <th>留言者</th>
+   <th>留言時間</th>
+ </thead>
+  <tbody>
+    <% @good.comments.each do |c|%>
+      <tr>
+        <td><%=c.content%></td>
+        <td><%=c.user.try(:name) %></td>
+        <td><%=c.created_at.localtime.to_s(:db)%></td>
+        <td><%=link_to "", good_comment_path(@good,c), :method =>:patch,:class =>"btn btn-info glyphicon glyphicon-pencil"%></td>
+        <td><%=link_to "", good_comment_path(@good,c),:method =>:delete, :class =>"btn btn-danger glyphicon glyphicon-trash"%></td>
+      </tr>
+    <%end%>
+  </tbody>
+</table>
+  <%=form_for @comment, :url => good_comment_path(@good,@comment), :method => :patch do |f| %>
+    <%=f.label :content,"修改留言"%>
+    <%=f.text_area :content, :class =>"form-control"%>
+    <%=f.submit "修改留言", :class =>"btn btn-primary"%>
+    <%= link_to "返回主頁", goods_path, :class =>"btn btn-default"%>
+  <% end %>

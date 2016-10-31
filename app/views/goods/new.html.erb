@@ -6,7 +6,7 @@
   </div>
   <div class="form-group">
     <%= f.label :type, "我有東東想要" %>
-    <%= f.select :type, [ Giving.name, Lending.name, Wanting.name] %>
+    <%= f.select :type, { "送" => Giving.name, "借人" => Lending.name, "徵求" => Wanting.name} %>
     <%= f.collection_select(:category_id, Category.all, :id, :name,:prompt => "東東類別" )%>
   </div>
   <div class="form-group">

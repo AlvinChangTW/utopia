@@ -1,6 +1,7 @@
 *{
  font-size: 16px;
 }
+
 .login img{
   border-radius: 100%;
   max-width: 50px;
@@ -29,4 +30,13 @@
 }
 .sub-title{
   font-family: 'Noto Sans TC', sans-serif;
+}
+td{
+  overflow: hidden;
+}
+.mw120{
+  max-width: 120px;
+}
+.mw250{
+  max-width: 250px;
 }

@@ -1,7 +1,7 @@
 class GoodsController < ApplicationController
-
+  before_action :user_login_check, :except => [:index]
   def index
-    @goods = Good.includes(:category).page(params[:page]).per(10)
+    @goods = Good.includes(:category).order("created_at DESC").page(params[:page]).per(10)
   end
 
   def new
@@ -16,7 +16,8 @@ class GoodsController < ApplicationController
   end
 
   def show
-    @good = Good.includes(:category).find(params[:id])
+    @good = Good.includes(:category, :comments).find(params[:id])
+    @comments = @good.comments.order("created_at DESC")
   end
 
   def edit
@@ -63,6 +64,13 @@ class GoodsController < ApplicationController
   def good_params
     params.require(:good).permit(:name, :description, :area, :type,
                                 :status, :picture, :user_id, :category_id)
+  end
+
+  def user_login_check
+    if current_user == nil
+      flash[:alert]="請先登入"
+      redirect_to goods_path
+    end
   end
 
 end

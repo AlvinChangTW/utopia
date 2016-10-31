@@ -1,6 +1,6 @@
 <div class="jumbotron">
   <div class="container">
-    <h1 class="title">漂泊的東東</h1>
+    <h1 class="title">漂泊ㄟ東東</h1>
     <p class="sub-title">這是一個讓你把用不到的東東送到需要的人手上的平台</p>
     <p class="sub-title">讓東東出去漂流，幫助更多需要它的人</p>
   </div>
@@ -10,12 +10,14 @@
 <table class="table">
   <thead class="thead-default">
     <tr>
-      <td class="col-sm-1">我有東東想...</td>
-      <td class="col-sm-1"></td>
-      <td class="col-sm-3">東東名稱</td>
-      <td class="col-sm-1">東東地區</td>
+      <td>我有東東想...</td>
+      <td></td>
+      <td>東東名稱</td>
+      <td>東東地區</td>
       <td>東東說明</td>
-      <td class="col-sm-1">東東狀態</td>
+      <td>發文者</td>
+      <td>發文時間</td>
+      <td>東東狀態</td>
     </tr>
   </thead>
   <tbody>
@@ -27,9 +29,11 @@
   <% end %>
       <td><%= t(g.type) %></td>
       <td class="list-img"><%= image_tag g.picture.url(:thumb) %></td>
-      <td><%= link_to g.name, good_path(g) %></td>
+      <td class="mw120"><%= link_to g.name, good_path(g) %></td>
       <td><%= g.area %></td>
-      <td><%= g.description %></td>
+      <td class="mw250"><%= g.description %></td>
+      <td><%= g.user.name %></td>
+      <td><%= g.created_at.localtime.to_s(:db) %></td>
       <td><%= g.status %></td>
     <%if current_user == g.user%>
       <td><%= link_to "", edit_good_path(g), :class =>"btn btn-info glyphicon glyphicon-pencil" %></td>

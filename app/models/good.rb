@@ -3,6 +3,7 @@ class Good < ApplicationRecord
     self.status = nil
     self.save
   end
+  has_many :comments, :dependent => :destroy
   belongs_to :user
   belongs_to :category
   validates_presence_of :name
