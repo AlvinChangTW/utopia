@@ -1,8 +1,13 @@
-<h4>東東名稱：<%= @good.name %></h4>
-<h4>東東地區：<%= @good.area %></h4>
-<h4>東東類別：<%= @good.category.name %></h4>
-<h4>東東說明：<%= @good.description %></h4>
-<h4>真相在這邊：</h4>
-<div class="show-img"><%= image_tag @good.picture.url %></div>
-<%= link_to "返回主頁", goods_path, :class => "btn btn-default" %>
-
+<div class="col-sm-12">
+  <div class="col-sm-8 col-sm-offset-2">
+    <ul class="list-group">
+      <li class="list-group-item">東東名稱：<%= @good.name %></li>
+      <li class="list-group-item">東東地區：<%= @good.area %></li>
+      <li class="list-group-item">東東類別：<%= @good.category.name %></li>
+      <li class="list-group-item">東東說明：<%= @good.description %></li>
+    </ul>
+    <h4 class="col-sm-12">真相在這邊：</h4>
+    <div class="show-img"><%= image_tag @good.picture.url %></div>
+    <br>
+    <%= link_to "返回主頁", goods_path, :class => "btn btn-default" %></div>
+</div>

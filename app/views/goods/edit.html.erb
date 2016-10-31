@@ -1,4 +1,4 @@
-<%= form_for @good.becomes(Good) ,:url => goods_path do |f| %>
+<%= form_for @good.becomes(Good) ,:url => good_path(@good), :method => :patch do |f| %>
 <div class="col-sm-offset-3 col-sm-6 new-good">
   <div class="form-group">
     <%= f.label t(:name) %>
@@ -8,17 +8,24 @@
     <%= f.label :type, "我有東東想要" %>
     <%= f.select :type, [ Giving.name, Lending.name, Wanting.name] %>
     <%= f.collection_select(:category_id, Category.all, :id, :name,:prompt => "東東類別" )%>
+    <%= check_box_tag :status, "1"%>顯示<%= @good.status %>
   </div>
   <div class="form-group">
     <%= f.label :area, "地區" %>
     <%= f.text_field :area , :class => "form-control" %>
   </div>
   上傳照片<%= f.file_field :picture %>
+  <% if @good.picture_file_name %>
+    <div class="topic-img">
+      <%= image_tag @good.picture.url(:medium) %>
+    </div>
+    <%= check_box_tag :delete_pic,"1"%>刪除照片
+  <% end %>
   <div class="form-group">
     <%= f.label :description, "說明" %>
     <%= f.text_area :description , :class => "form-control" %>
   </div>
-    <%= f.submit "新增東東" , :class => "btn btn-info"%>
+    <%= f.submit "修改東東" , :class => "btn btn-info"%>
   <% end %>
   <%= link_to "返回主頁", goods_path, :class => "btn btn-default" %>
 </div>

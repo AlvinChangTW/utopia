@@ -1,7 +1,8 @@
 <div class="jumbotron">
   <div class="container">
     <h1 class="title">漂泊的東東</h1>
-    <p class="sub-title">這是一個讓你把用不到的東東送到需要的人手上的平台，讓東東出去漂流，幫助更多需要它的人</p>
+    <p class="sub-title">這是一個讓你把用不到的東東送到需要的人手上的平台</p>
+    <p class="sub-title">讓東東出去漂流，幫助更多需要它的人</p>
   </div>
 </div>
 <h1></h1>
@@ -19,13 +20,24 @@
   </thead>
   <tbody>
     <% @goods.each do |g| %>
+  <% if g.status != nil %>
+    <tr class="active">
+  <% else %>
     <tr>
+  <% end %>
       <td><%= t(g.type) %></td>
       <td class="list-img"><%= image_tag g.picture.url(:thumb) %></td>
       <td><%= link_to g.name, good_path(g) %></td>
       <td><%= g.area %></td>
       <td><%= g.description %></td>
       <td><%= g.status %></td>
+    <%if current_user == g.user%>
+      <td><%= link_to "", edit_good_path(g), :class =>"btn btn-info glyphicon glyphicon-pencil" %></td>
+      <td><%= link_to "", good_path(g), :method => :delete, :class =>"btn btn-danger glyphicon glyphicon-trash" %></td>
+    <% else %>
+      <td></td>
+      <td></td>
+    <% end %>
     </tr>
     <% end %>
   </tbody>

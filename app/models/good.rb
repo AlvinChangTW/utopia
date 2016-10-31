@@ -1,4 +1,8 @@
 class Good < ApplicationRecord
+  def status_uncheck
+    self.status = nil
+    self.save
+  end
   belongs_to :user
   belongs_to :category
   validates_presence_of :name
