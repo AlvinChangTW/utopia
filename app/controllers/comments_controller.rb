@@ -6,16 +6,17 @@ class CommentsController < ApplicationController
     @comment = @good.comments.build(comment_params)
     if current_user == nil
       flash[:alert]="請先登入"
-      render "goods/show"
+      #render "goods/show"
     else  @comment.user = current_user
       if @comment.save
         flash[:notice]="留言成功"
-        render "goods/show"
+        #render "goods/show"
       else
         flash[:alert]="留言失敗"
-        render "goods/show"
+        #render "goods/show"
       end
     end
+    redirect_to good_path(@good)
   end
   def edit
     @comment = Comment.find(params[:id])

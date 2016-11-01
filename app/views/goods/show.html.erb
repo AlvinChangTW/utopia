@@ -21,7 +21,11 @@
   <tbody>
     <% @comments.each do |c|%>
       <tr>
+      <% if current_user != @good.user && current_user != c.user %>
+        <td>這是悄悄話～～</td>
+      <% else %>
         <td><%=c.content%></td>
+      <% end %>
         <td><%=c.user.name %></td>
         <td><%=c.created_at.localtime.to_s(:db)%></td>
         <%if current_user == c.user%>
@@ -35,6 +39,7 @@
 <% @comment = @good.comments.build %>
 <%=form_for @comment, :url => good_comments_path(@good), :method => :post do |f| %>
   <%=f.label :content,"留言"%>
+  <%= check_box_tag :secret, true %> 顯示為悄悄話
   <%=f.text_area :content, :class =>"form-control"%>
   <%=f.submit "新增留言", :class =>"btn btn-primary"%>
   <%= link_to "返回主頁", goods_path, :class => "btn btn-default" %>
